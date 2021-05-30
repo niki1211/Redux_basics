@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { fetchItems } from '../actions/dashboardActions';
-import { connect } from 'react-redux'
+import Card from './Shared/Card';
+import { connect } from 'react-redux';
+import Tab from '../components/Shared/Tab';
+import moment from 'moment';
 
 class Dashboard extends Component {
 
@@ -9,17 +12,25 @@ class Dashboard extends Component {
     }
 
     render() {
-        const dItems = this.props.dItems.map((item) => (
-            <div key={item.flight_number}>
-                {item.mission_name}
+        let past = [];
+        let upcoming = [];
+        let m = moment().format('YYYY-MM-DDTHH:mm:ssZ');
+
+        const dItems = this.props.dItems.map((item, index) => (
+            <div key={index}>
+                {console.log((moment(m)).isAfter(moment(item.launch_date_local)) ? 
+                    past.push(item) : upcoming.push(item))}
+                <Card item = {item} />
             </div>
         ))
+
         return (
             <div>
                 <h1>List Of SpaceX Launches:</h1>
-                <div>
+                <Tab past = {past} upcoming = {upcoming} items={dItems}/>
+                {/* <div>
                     <h3>{dItems}</h3>
-                </div>
+                </div> */}
             </div>
         );
     }
