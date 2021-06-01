@@ -4,11 +4,13 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Modal from './Modal';
+import Modals from './Modal';
 
 const useStyles = makeStyles({
   root: {
-      width: '35%',
+      width: '100%',
+      backgroundColor: 'white',
+      color: '#005288'
   },
   title: {
     fontSize: 14,
@@ -18,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard({item}) {
+export default function Cards({item}) {
   const classes = useStyles();
 
   return (
@@ -29,7 +31,7 @@ export default function SimpleCard({item}) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Modal name={item.mission_name} details={item.details}/>
+        <Modals item = {item}/>
       </CardActions>
     </Card>
   );
