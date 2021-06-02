@@ -53,7 +53,6 @@ export class Filter extends Component {
                         && (item.upcoming) ?
                         item : ''));
                 let upcomingList = _.without(upList, "");
-                console.log(upcomingList);
                 if(this.state.start && this.state.end) { console.log("jk")
                     const fList = upcomingList.map(item => (
                         (moment(item.launch_date_local)).isSameOrAfter(moment(this.state.start)) 
@@ -61,7 +60,6 @@ export class Filter extends Component {
                         item : ''));
                     upcomingList = _.without(fList, '')
                 }
-                console.log(upcomingList);
                 this.setState({filteredList: upcomingList});
                 this.props.setFilteredItems(upcomingList);
                 break;
@@ -93,7 +91,6 @@ export class Filter extends Component {
             selector : 'All',
             filteredList: []
         },() => console.log('state empty'));
-        console.log("tg")
         this.props.setFilteredItems([]);
     }
 

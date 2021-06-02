@@ -10,10 +10,10 @@ class Login extends Component {
 
     render() {
         return (
-            <div style = {{textAlign:'center', margin:'10%'}}>
+            <div style = {{textAlign:'center', margin:'15%', color: '#005288'}}>
             <form noValidate>
-                <h1>Login </h1>
-                <div style={{display:'inline-grid'}}>
+                <h1>SpaceX Login </h1>
+                {/* <div style={{display:'inline-grid'}}>
                     <TextField
                     id="outlined-required"
                     label="Username"
@@ -28,10 +28,10 @@ class Login extends Component {
                     variant="outlined"
                     style={{margin:'25px'}}
                     />
-                    <Button variant="contained" onClick={() => this.props.history.push('/dashboard')}>
-                    Submit
+                </div> */}
+                <Button variant="contained" onClick={() => this.props.history.push('/dashboard')}>
+                    View Dashboard
                 </Button>
-                </div>
             </form>
             </div>
         )
