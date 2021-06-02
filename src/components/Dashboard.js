@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { setItems } from '../actions/dashboardActions';
 import { connect } from 'react-redux';
-import Tab from '../components/Shared/Tab';
 import Cards from './Shared/Card';
+import Button from '@material-ui/core/Button';
 import Filter from './Filter';
 import _ from 'lodash';
 
@@ -32,9 +33,12 @@ class Dashboard extends Component {
         const {items} = this.state;
         return (
             <div style={{width: '1100px', margin:'20px auto', color:'#005288'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h1>SpaceX Dashboard</h1>
+                <Button onClick={() => this.props.history.push('/login')}>Log out</Button>
+                </div>
                 <Filter />
-                {/* <Tab past = {past} upcoming = {upcoming} items={dItems}/> */}
+                {/* <Tab past = {past} upcoming = {upcoming} items={items}/> */}
                 <h2>SpaceX Launches:</h2>
                 <div style={{display:'flex', flexWrap:'wrap', justifyContent:'space-between'}}>
                     {
@@ -54,4 +58,4 @@ const mapStateToProps = state => ({
     filteredItems: state.dItems.filteredItems,
 })
 
-export default connect(mapStateToProps, {setItems})(Dashboard);
+export default withRouter(connect(mapStateToProps, {setItems})(Dashboard));
